@@ -1,3 +1,4 @@
+require("dotenv").config()
 const express = require('express')
 const app = express()
 const path = require("path")
@@ -13,6 +14,10 @@ app.set("view engine", "ejs")
 
 app.use('/', indexRouter)
 app.use('/new', newRouter)
+
+app.use(( req, res ) => {
+    res.status(404).send("Doest not exist")
+})
 
 app.use((err,req,res,next) => {
     res.render("error", { error: err.message })
