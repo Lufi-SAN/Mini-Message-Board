@@ -20,7 +20,7 @@ app.use(( req, res ) => {
 })
 
 app.use((err,req,res,next) => {
-    res.render("error", { error: err.message })
+    res.render("error", { error: err.stack })
 })
 
 const PORT = 3000 || process.env.PORT
